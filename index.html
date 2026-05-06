@@ -25,14 +25,6 @@
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
     }
     .header { text-align: center; margin-bottom: 30px; }
-    .logo { 
-      font-size: 40px; font-weight: 700; 
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
-      letter-spacing: -1px;
-    }
     .tagline { color: #999; font-size: 15px; }
     .trust-badges {
       display: flex; justify-content: center; gap: 15px;
@@ -183,7 +175,23 @@
 <body>
   <div class="container">
     <div class="header">
-      <div class="logo">Veltrix BD</div>
+      <!-- প্রিমিয়াম SVG লোগো - 100% ওয়ার্কিং -->
+      <svg width="200" height="70" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 15px auto; display:block;">
+        <defs>
+          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#25D366;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#128C7E;stop-opacity:1" />
+          </linearGradient>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#25D366" flood-opacity="0.4"/>
+          </filter>
+        </defs>
+        <circle cx="25" cy="35" r="18" fill="url(#logoGradient)" filter="url(#shadow)"/>
+        <text x="25" y="43" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">V</text>
+        <text x="55" y="32" font-family="Hind Siliguri, sans-serif" font-size="28" font-weight="700" fill="url(#logoGradient)">Veltrix</text>
+        <text x="55" y="52" font-family="Hind Siliguri, sans-serif" font-size="16" font-weight="600" fill="#25D366">BD</text>
+      </svg>
+      
       <p class="tagline">প্রিমিয়াম কোয়ালিটি • বেস্ট প্রাইস</p>
     </div>
     

@@ -1,54 +1,61 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veltrix BD</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Segoe UI', sans-serif; 
-      background: #0a0a0a;
-      color: #fff;
-      padding: 20px 15px;
+</head>
+<body style="background:#0a0a0a; color:white; font-family:sans-serif; padding:20px; margin:0; text-align:center;">
+  
+  <div style="max-width:500px; margin:0 auto; border:2px solid #25D366; border-radius:20px; padding:30px 20px;">
+    
+    <h1 style="font-size:36px; margin:0 0 10px 0;">Veltrix BD</h1>
+    <p style="color:#aaa; margin:0 0 25px 0;">খাঁটি পণ্য, সাশ্রয়ী দাম</p>
+    
+    <a href="https://wa.me/8801837218731" style="display:block; background:#25D366; color:black; padding:14px; border-radius:10px; text-decoration:none; font-weight:bold; margin-bottom:30px;">💬 WhatsApp এ মেসেজ করুন</a>
+    
+    <h2 style="color:#25D366; font-size:18px; text-align:left; margin:20px 0 15px 0;">অর্ডার ফর্ম</h2>
+    
+    <form onsubmit="sendOrder(event)" style="text-align:left; background:#1a1a1a; padding:20px; border-radius:12px;">
+      
+      <label style="display:block; margin-bottom:6px; color:#ccc;">আপনার নাম *</label>
+      <input type="text" id="name" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
+      
+      <label style="display:block; margin-bottom:6px; color:#ccc;">মোবাইল নাম্বার *</label>
+      <input type="tel" id="phone" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
+      
+      <label style="display:block; margin-bottom:6px; color:#ccc;">প্রোডাক্ট *</label>
+      <select id="product" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
+        <option value="">বাছাই করুন</option>
+        <option value="খাঁটি মধু">🍯 খাঁটি মধু</option>
+        <option value="পোশাক">👕 পোশাক</option>
+        <option value="হেডফোন">🎧 হেডফোন</option>
+        <option value="চার্জার ফ্যান">🔋 চার্জার ফ্যান</option>
+        <option value="সোলার ফ্যান">☀️ সোলার ফ্যান</option>
+        <option value="পাঞ্জাবী">🥼 পাঞ্জাবী</option>
+      </select>
+      
+      <label style="display:block; margin-bottom:6px; color:#ccc;">পরিমাণ *</label>
+      <input type="number" id="quantity" value="1" min="1" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
+      
+      <label style="display:block; margin-bottom:6px; color:#ccc;">ঠিকানা *</label>
+      <textarea id="address" rows="3" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;"></textarea>
+      
+      <button type="submit" style="width:100%; padding:14px; background:#25D366; color:black; border:none; border-radius:10px; font-weight:bold; font-size:17px;">📦 WhatsApp এ অর্ডার করুন</button>
+    </form>
+  </div>
+
+  <script>
+    function sendOrder(e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value;
+      var phone = document.getElementById('phone').value;
+      var product = document.getElementById('product').value;
+      var quantity = document.getElementById('quantity').value;
+      var address = document.getElementById('address').value;
+      var message = `*Veltrix BD - নতুন অর্ডার* %0A%0A*নাম:* ${name}%0A*মোবাইল:* ${phone}%0A*প্রোডাক্ট:* ${product}%0A*পরিমাণ:* ${quantity} টি%0A*ঠিকানা:* ${address}%0A%0Aঅর্ডারটি কনফার্ম করুন।`;
+      window.open('https://wa.me/8801837218731?text=' + message, '_blank');
     }
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      border: 2px solid #25D366;
-      border-radius: 20px;
-      padding: 30px 20px;
-      box-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
-    }
-    .logo { 
-      font-size: 36px; 
-      font-weight: 900; 
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .tagline { 
-      color: #aaa; 
-      font-size: 15px; 
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .whatsapp-btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background: #25D366;
-      color: #0a0a0a;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 16px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .section-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin: 25px 0 15px 0;
-      color: #25D366;
-    }
-    .product
+  </script>
+</body>
+</html>

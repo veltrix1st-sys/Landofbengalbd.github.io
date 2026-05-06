@@ -1,53 +1,130 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Veltrix BD</title>
+    <title>Veltrix BD - অনলাইন শপ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            color: #333;
+        }
+        .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 80px 20px;
-            margin: 0;
-            min-height: 100vh;
+            padding: 50px 20px;
         }
-        h1 { 
-            font-size: 45px; 
-            margin-bottom: 15px; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        h1 { font-size: 40px; margin: 0 0 10px 0; }
+        .tagline { font-size: 18px; opacity: 0.9; }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        p { 
-            font-size: 18px; 
-            margin-bottom: 30px; 
-            opacity: 0.9;
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .card h3 { margin: 15px 0 5px 0; color: #667eea; }
+        .price { 
+            font-size: 22px; 
+            font-weight: bold; 
+            color: #25D366; 
+            margin: 10px 0;
         }
         .btn {
             display: inline-block;
             background: #25D366;
             color: white;
-            padding: 16px 35px;
-            border-radius: 30px;
+            padding: 12px 25px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-top: 10px;
         }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .btn:hover { background: #1ebe57; }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #333;
+            color: white;
+            margin-top: 50px;
+        }
+        .main-btn {
+            background: white;
+            color: #667eea;
+            font-size: 18px;
+            padding: 15px 35px;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Veltrix BD</h1>
-    <p>Our official website is now live 🚀</p>
-    <p>Coming Soon...</p>
-    
-    <a href="https://wa.me/8801837218731" class="btn">WhatsApp এ যোগাযোগ করুন</a>
-    
+    <div class="header">
+        <h1>Veltrix BD</h1>
+        <p class="tagline">আস্থার সাথে কেনাকাটা করুন 🚀</p>
+        <a href="https://wa.me/8801837218731" class="btn main-btn">WhatsApp এ অর্ডার করুন</a>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align:center;">আমাদের প্রোডাক্ট সমূহ</h2>
+        
+        <div class="products">
+            <div class="card">
+                <h3>🐝 খাঁটি মধু</h3>
+                <p>সুন্দরবনের চাকের মধু, 100% খাঁটি</p>
+                <div class="price">৳1200 / কেজি</div>
+                <a href="https://wa.me/8801837218731?text=আমি মধু অর্ডার করতে চাই" class="btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="card">
+                <h3>👕 কাপড়</h3>
+                <p>এক্সপোর্ট কোয়ালিটি টি-শার্ট</p>
+                <div class="price">৳450</div>
+                <a href="https://wa.me/8801837218731?text=আমি কাপড় অর্ডার করতে চাই" class="btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="card">
+                <h3>🎧 হেডফোন</h3>
+                <p>হাই কোয়ালিটি বেজ, ব্লুটুথ</p>
+                <div class="price">৳850</div>
+                <a href="https://wa.me/8801837218731?text=আমি হেডফোন অর্ডার করতে চাই" class="btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="card">
+                <h3>⌚ হাত ঘড়ি</h3>
+                <p>স্টাইলিশ ডিজিটাল ওয়াচ</p>
+                <div class="price">৳650</div>
+                <a href="https://wa.me/8801837218731?text=আমি হাত ঘড়ি অর্ডার করতে চাই" class="btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="card">
+                <h3>🌀 চার্জার ফ্যান</h3>
+                <p>রিচার্জেবল, কারেন্ট গেলে চলে 6 ঘন্টা</p>
+                <div class="price">৳950</div>
+                <a href="https://wa.me/8801837218731?text=আমি চার্জার ফ্যান অর্ডার করতে চাই" class="btn">অর্ডার করুন</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>অর্ডার করতে WhatsApp করুন: 01837218731</p>
+        <p>© 2026 Veltrix BD - সারা দেশে ক্যাশ অন ডেলিভারি</p>
+    </div>
 </body>
 </html>

@@ -1,60 +1,332 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veltrix BD</title>
+  <title>Veltrix BD - Premium Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Hind Siliguri', sans-serif; 
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px 15px;
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 24px;
+      padding: 35px 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .header { text-align: center; margin-bottom: 30px; }
+    .logo { 
+      font-size: 38px; 
+      font-weight: 700; 
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .tagline { color: #888; font-size: 15px; }
+    .wa-btn {
+      display: block; width: 100%; padding: 16px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #fff; border-radius: 14px; text-decoration: none;
+      font-weight: 600; font-size: 16px; text-align: center;
+      margin-bottom: 35px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .wa-btn:active { transform: scale(0.97); }
+    .section-title {
+      font-size: 17px; font-weight: 600; margin: 0 0 18px 4px;
+      color: #25D366; display: flex; align-items: center; gap: 8px;
+    }
+    .product-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 30px;
+    }
+    .product-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px; padding: 16px 10px; text-align: center;
+      transition: all 0.3s ease; cursor: pointer; position: relative;
+    }
+    .product-card:active {
+      transform: scale(0.95);
+      background: rgba(37, 211, 102, 0.15);
+    }
+    .offer-badge {
+      position: absolute; top: 8px; right: 8px;
+      background: #ff3b30; color: #fff; font-size: 10px;
+      font-weight: 700; padding: 3px 7px; border-radius: 6px;
+    }
+    .product-icon { font-size: 32px; margin-bottom: 8px; }
+    .product-name { font-weight: 600; font-size: 13px; margin-bottom: 8px; min-height: 32px; }
+    .price-box { margin-bottom: 8px; }
+    .old-price {
+      font-size: 12px; color: #777; text-decoration: line-through;
+    }
+    .offer-price {
+      font-size: 18px; font-weight: 700; color: #25D366;
+    }
+    .save-text { font-size: 10px; color: #ff9500; margin-top: 2px; }
+    .order-btn {
+      width: 100%; padding: 8px; background: #25D366;
+      color: #000; border: none; border-radius: 8px;
+      font-weight: 600; font-size: 12px; margin-top: 6px;
+    }
+    #orderSection { display: none; animation: slideUp 0.4s ease; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .order-header {
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      padding: 14px; border-radius: 12px; margin-bottom: 20px;
+    }
+    .order-product-info { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .order-price-box {
+      background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;
+      display: flex; justify-content: space-between; font-size: 14px;
+    }
+    .order-form {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 22px; border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; margin-bottom: 8px; font-size: 14px;
+      color: #bbb; font-weight: 500;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 14px; border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 15px;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: #25D366;
+    }
+    .btn-primary {
+      width: 100%; padding: 16px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #fff; border: none; border-radius: 12px;
+      font-weight: 600; font-size: 16px; cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .btn-secondary {
+      width: 100%; padding: 14px; background: rgba(255, 255, 255, 0.08);
+      color: #ccc; border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px; font-weight: 500; font-size: 15px; cursor: pointer;
+    }
+    .total-box {
+      background: rgba(37, 211, 102, 0.1); border: 1px solid rgba(37, 211, 102, 0.3);
+      padding: 12px; border-radius: 10px; margin: 15px 0;
+      display: flex; justify-content: space-between; font-weight: 600;
+    }
+  </style>
 </head>
-<body style="background:#0a0a0a; color:white; font-family:sans-serif; padding:20px; margin:0; text-align:center;">
-  
-  <div style="max-width:500px; margin:0 auto; border:2px solid #25D366; border-radius:20px; padding:30px 20px;">
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">Veltrix BD</div>
+      <p class="tagline">প্রিমিয়াম কোয়ালিটি • বেস্ট প্রাইস</p>
+    </div>
     
-    <h1 style="font-size:36px; margin:0 0 10px 0;">Veltrix BD</h1>
-    <p style="color:#aaa; margin:0 0 25px 0;">খাঁটি পণ্য, সাশ্রয়ী দাম</p>
+    <a href="https://wa.me/8801837218731" class="wa-btn">💬 WhatsApp এ সরাসরি কথা বলুন</a>
     
-    <a href="https://wa.me/8801837218731" style="display:block; background:#25D366; color:black; padding:14px; border-radius:10px; text-decoration:none; font-weight:bold; margin-bottom:30px;">💬 WhatsApp এ মেসেজ করুন</a>
-    
-    <h2 style="color:#25D366; font-size:18px; text-align:left; margin:20px 0 15px 0;">অর্ডার ফর্ম</h2>
-    
-    <form onsubmit="sendOrder(event)" style="text-align:left; background:#1a1a1a; padding:20px; border-radius:12px;">
+    <!-- প্রোডাক্ট লিস্ট -->
+    <div id="productList">
+      <div class="section-title">🔥 ধামাকা অফার</div>
+      <div class="product-grid">
+        
+        <div class="product-card" onclick="selectProduct('খাঁটি মধু', '🍯', 1200, 9)">
+          <div class="offer-badge">9% OFF</div>
+          <div class="product-icon">🍯</div>
+          <div class="product-name">খাঁটি মধু</div>
+          <div class="price-box">
+            <div class="old-price">৳১২০০</div>
+            <div class="offer-price">৳১০৯২</div>
+            <div class="save-text">বাঁচবে ৳১০৮</div>
+          </div>
+          <button class="order-btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product-card" onclick="selectProduct('প্রিমিয়াম পোশাক', '👕', 2500, 15)">
+          <div class="offer-badge">15% OFF</div>
+          <div class="product-icon">👕</div>
+          <div class="product-name">প্রিমিয়াম পোশাক</div>
+          <div class="price-box">
+            <div class="old-price">৳২৫০০</div>
+            <div class="offer-price">৳২১২৫</div>
+            <div class="save-text">বাঁচবে ৳৩৭৫</div>
+          </div>
+          <button class="order-btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product-card" onclick="selectProduct('ওয়্যারলেস হেডফোন', '🎧', 1800, 10)">
+          <div class="offer-badge">10% OFF</div>
+          <div class="product-icon">🎧</div>
+          <div class="product-name">হেডফোন</div>
+          <div class="price-box">
+            <div class="old-price">৳১৮০০</div>
+            <div class="offer-price">৳১৬২০</div>
+            <div class="save-text">বাঁচবে ৳১৮০</div>
+          </div>
+          <button class="order-btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product-card" onclick="selectProduct('চার্জার ফ্যান', '🔋', 3200, 12)">
+          <div class="offer-badge">12% OFF</div>
+          <div class="product-icon">🔋</div>
+          <div class="product-name">চার্জার ফ্যান</div>
+          <div class="price-box">
+            <div class="old-price">৳৩২০০</div>
+            <div class="offer-price">৳২৮১৬</div>
+            <div class="save-text">বাঁচবে ৳৩৮৪</div>
+          </div>
+          <button class="order-btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product-card" onclick="selectProduct('সোলার ফ্যান', '☀️', 4500, 8)">
+          <div class="offer-badge">8% OFF</div>
+          <div class="product-icon">☀️</div>
+          <div class="product-name">সোলার ফ্যান</div>
+          <div class="price-box">
+            <div class="old-price">৳৪৫০০</div>
+            <div class="offer-price">৳৪১৪০</div>
+            <div class="save-text">বাঁচবে ৳৩৬০</div>
+          </div>
+          <button class="order-btn">অর্ডার করুন</button>
+        </div>
+        
+        <div class="product-card" onclick="selectProduct('ডিজাইনার পাঞ্জাবী', '🥼', 2800, 20)">
+          <div class="offer-badge">20% OFF</div>
+          <div class="product-icon">🥼</div>
+          <div class="product-name">পাঞ্জাবী</div>
+          <div class="price-box">
+            <div class="old-price">৳২৮০০</div>
+            <div class="offer-price">৳২২৪০</div>
+            <div class="save-text">বাঁচবে ৳৫৬০</div>
+          </div>
+          <button class="order-btn">অর্ডার করুন</button>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- অর্ডার ফর্ম -->
+    <div id="orderSection">
+      <div class="order-header">
+        <div class="order-product-info">
+          <span id="productIcon" style="font-size:32px;"></span>
+          <div>
+            <div style="font-size:13px; color:#888;">সিলেক্টেড প্রোডাক্ট</div>
+            <div style="font-weight:600; font-size:16px;" id="selectedProduct"></div>
+          </div>
+        <div onclick="backToProducts()" style="font-size:24px; cursor:pointer;">✕</div>
+      </div>
       
-      <label style="display:block; margin-bottom:6px; color:#ccc;">আপনার নাম *</label>
-      <input type="text" id="name" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
-      
-      <label style="display:block; margin-bottom:6px; color:#ccc;">মোবাইল নাম্বার *</label>
-      <input type="tel" id="phone" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
-      
-      <label style="display:block; margin-bottom:6px; color:#ccc;">প্রোডাক্ট *</label>
-      <select id="product" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
-        <option value="">বাছাই করুন</option>
-        <option value="খাঁটি মধু">🍯 খাঁটি মধু</option>
-        <option value="পোশাক">👕 পোশাক</option>
-        <option value="হেডফোন">🎧 হেডফোন</option>
-        <option value="চার্জার ফ্যান">🔋 চার্জার ফ্যান</option>
-        <option value="সোলার ফ্যান">☀️ সোলার ফ্যান</option>
-        <option value="পাঞ্জাবী">🥼 পাঞ্জাবী</option>
-      </select>
-      
-      <label style="display:block; margin-bottom:6px; color:#ccc;">পরিমাণ *</label>
-      <input type="number" id="quantity" value="1" min="1" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;">
-      
-      <label style="display:block; margin-bottom:6px; color:#ccc;">ঠিকানা *</label>
-      <textarea id="address" rows="3" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0a0a0a; color:white; box-sizing:border-box;"></textarea>
-      
-      <button type="submit" style="width:100%; padding:14px; background:#25D366; color:black; border:none; border-radius:10px; font-weight:bold; font-size:17px;">📦 WhatsApp এ অর্ডার করুন</button>
-    </form>
+      <form class="order-form" onsubmit="submitOrder(event)">
+        <div class="order-price-box">
+          <span>রেগুলার প্রাইস:</span>
+          <span style="text-decoration:line-through; color:#777;">৳<span id="regularPrice"></span></span>
+        </div>
+        <div class="order-price-box" style="background:rgba(37,211,102,0.15); border:1px solid rgba(37,211,102,0.3);">
+          <span>অফার প্রাইস:</span>
+          <span style="color:#25D366; font-weight:700;">৳<span id="offerPrice"></span></span>
+        </div>
+        
+        <div class="form-group">
+          <label>আপনার নাম *</label>
+          <input type="text" id="custName" placeholder="পূর্ণ নাম লিখুন" required>
+        </div>
+        
+        <div class="form-group">
+          <label>মোবাইল নাম্বার *</label>
+          <input type="tel" id="custPhone" placeholder="01XXXXXXXXX" required>
+        </div>
+        
+        <div class="form-group">
+          <label>প্রোডাক্ট ডিটেইলস *</label>
+          <input type="text" id="prodDetails" placeholder="সাইজ, কালার, মডেল ইত্যাদি" required>
+        </div>
+        
+        <div class="form-group">
+          <label>পরিমাণ *</label>
+          <input type="number" id="prodQty" value="1" min="1" required oninput="updateTotal()">
+        </div>
+        
+        <div class="form-group">
+          <label>ডেলিভারি ঠিকানা *</label>
+          <textarea id="custAddress" rows="3" placeholder="বাসা নং, রোড, এলাকা, জেলা" required></textarea>
+        </div>
+        
+        <div class="total-box">
+          <span>মোট টাকা:</span>
+          <span style="color:#25D366;">৳<span id="totalPrice">0</span></span>
+        </div>
+        
+        <button type="submit" class="btn-primary">🚀 অর্ডার কনফার্ম করুন</button>
+        <button type="button" class="btn-secondary" onclick="backToProducts()">← প্রোডাক্ট লিস্টে ফিরুন</button>
+      </form>
+    </div>
   </div>
 
   <script>
-    function sendOrder(e) {
+    let currentProduct = '', currentIcon = '', currentRegular = 0, currentOffer = 0, currentDiscount = 0;
+    
+    function selectProduct(name, icon, regular, discount) {
+      currentProduct = name;
+      currentIcon = icon;
+      currentRegular = regular;
+      currentDiscount = discount;
+      currentOffer = Math.round(regular - (regular * discount / 100));
+      
+      document.getElementById('selectedProduct').innerText = name;
+      document.getElementById('productIcon').innerText = icon;
+      document.getElementById('regularPrice').innerText = regular;
+      document.getElementById('offerPrice').innerText = currentOffer;
+      document.getElementById('prodQty').value = 1;
+      updateTotal();
+      
+      document.getElementById('orderSection').style.display = 'block';
+      document.getElementById('productList').style.display = 'none';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      if(navigator.vibrate) navigator.vibrate(50);
+    }
+    
+    function updateTotal() {
+      const qty = document.getElementById('prodQty').value || 1;
+      const total = currentOffer * qty;
+      document.getElementById('totalPrice').innerText = total;
+    }
+    
+    function backToProducts() {
+      document.getElementById('orderSection').style.display = 'none';
+      document.getElementById('productList').style.display = 'block';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    
+    function submitOrder(e) {
       e.preventDefault();
-      var name = document.getElementById('name').value;
-      var phone = document.getElementById('phone').value;
-      var product = document.getElementById('product').value;
-      var quantity = document.getElementById('quantity').value;
-      var address = document.getElementById('address').value;
-      var message = `*Veltrix BD - নতুন অর্ডার* %0A%0A*নাম:* ${name}%0A*মোবাইল:* ${phone}%0A*প্রোডাক্ট:* ${product}%0A*পরিমাণ:* ${quantity} টি%0A*ঠিকানা:* ${address}%0A%0Aঅর্ডারটি কনফার্ম করুন।`;
-      window.open('https://wa.me/8801837218731?text=' + message, '_blank');
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const details = document.getElementById('prodDetails').value;
+      const qty = document.getElementById('prodQty').value;
+      const address = document.getElementById('custAddress').value;
+      const total = currentOffer * qty;
+      const save = (currentRegular - currentOffer) * qty;
+      
+      const msg = `*Veltrix BD - নতুন অর্ডার* %0A%0A📦 *প্রোডাক্ট:* ${currentProduct}%0A📝 *ডিটেইলস:* ${details}%0A🔢 *পরিমাণ:* ${qty} টি%0A%0A💰 *রেগুলার প্রাইস:* ৳${currentRegular}%0A🔥 *অফার প্রাইস:* ৳${currentOffer}%0A💵 *মোট:* ৳${total}%0A💚 *আপনি বাঁচালেন:* ৳${save}%0A%0A👤 *নাম:* ${name}%0A📱 *মোবাইল:* ${phone}%0A📍 *ঠিকানা:* ${address}%0A%0A✅ অর্ডারটি কনফার্ম করুন`;
+      
+      window.open('https://wa.me/8801837218731?text=' + msg, '_blank');
     }
   </script>
 </body>
